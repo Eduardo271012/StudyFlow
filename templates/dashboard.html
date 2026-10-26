@@ -1,0 +1,132 @@
+```html
+{% extends 'base.html' %}
+
+{% block titulo %}Meu painel | StudyFlow{% endblock %}
+
+{% block conteudo %}
+
+<div class="dashboard">
+
+    <aside class="menu-lateral">
+
+        <nav class="navegacao-dashboard">
+            <a href="{{ url_for('dashboard') }}" class="item-menu-dashboard ativo">
+                <span>▦</span>
+                Painel
+            </a>
+
+            <a href="#" class="item-menu-dashboard">
+                <span>◷</span>
+                Foco
+            </a>
+
+            <a href="{{ url_for('historico') }}" class="item-menu-dashboard">
+                <span>◴</span>
+                Histórico
+            </a>
+
+            <a href="#" class="item-menu-dashboard">
+                <span>☷</span>
+                Atividades
+            </a>
+
+            <a href="#" class="item-menu-dashboard">
+                <span>▦</span>
+                Calendário
+            </a>
+
+            <a href="#" class="item-menu-dashboard">
+                <span>♧</span>
+                Turmas
+            </a>
+
+            <a href="#" class="item-menu-dashboard">
+                <span>♜</span>
+                Desafios e ranking
+            </a>
+
+            <a href="#" class="item-menu-dashboard">
+                <span>♙</span>
+                Meu perfil
+            </a>
+        </nav>
+
+        <a href="{{ url_for('logout') }}" class="item-menu-dashboard sair">
+            <span>↪</span>
+            Sair da conta
+        </a>
+
+    </aside>
+
+    <section class="conteudo-dashboard">
+
+        <header class="topo-dashboard">
+            <div>
+                <h1>Meu painel</h1>
+                <p>Seu espaço para estudar e evoluir.</p>
+            </div>
+        </header>
+
+        <div class="boas-vindas">
+            <h2>Olá, {{ current_user.nome }}!</h2>
+            <p>Vamos avançar nos seus objetivos hoje?</p>
+        </div>
+
+        <div class="conteudo-principal">
+
+            <section class="cartao-foco">
+
+                <div class="cabecalho-foco">
+                    <div>
+                        <h2>Sessão de foco</h2>
+                        <p>Reserve um tempo para avançar nos seus estudos.</p>
+                    </div>
+
+                    <span class="etiqueta-foco">
+                        🎯 Hora de focar
+                    </span>
+                </div>
+
+                <div class="cronometro">
+                    <span id="tempo">{{ tempo_formatado }}</span>
+                </div>
+
+                <p class="texto-cronometro">
+                    minutos de concentração
+                </p>
+
+                <form method="POST" action="{{ url_for('dashboard') }}">
+
+                    <div class="duracao-foco">
+                        <label for="duracao">Duração da sessão</label>
+
+                        <select id="duracao" name="duracao">
+                            <option value="15">15 minutos</option>
+                            <option value="25" selected>25 minutos</option>
+                            <option value="45">45 minutos</option>
+                            <option value="60">60 minutos</option>
+                        </select>
+                    </div>
+
+                    <div class="controles-foco">
+
+                        <button type="button" id="botao-iniciar" class="botao-iniciar">Iniciar foco</button>
+
+                        <button type="button" id="botao-pausar" class="botao-reiniciar" disabled>Pausar</button>
+
+                        <button type="button" id="botao-reiniciar" class="botao-reiniciar">Reiniciar</button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </div>
+
+    </section>
+
+</div>
+<script src="{{ url_for('static', filename='js/cronometro.js') }}"></script>
+{% endblock %}
+```

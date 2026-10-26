@@ -1,0 +1,70 @@
+
+{% extends "base.html" %}
+
+{% block title %}Histórico de Estudos | StudyFlow{% endblock %}
+
+{% block conteudo %}
+<section class="pagina-historico">
+    <h1>Histórico de estudos</h1>
+    <p>Acompanhe suas sessões de foco concluídas e interrompidas.</p>
+
+    {% if sessoes %}
+        <div class="lista-sessoes">
+            {% for sessao in sessoes %}
+                <article class="cartao-sessao">
+                    <h2>Sessão de estudo #{{ sessao.id }}</h2>
+
+                    <p>
+                        <strong>Data:</strong>
+                        {{ sessao.inicio_em.strftime("%d/%m/%Y") }}
+                    </p>
+
+                    <p>
+                        <strong>Início:</strong>
+                        {{ sessao.inicio_em.strftime("%H:%M") }}
+                    </p>
+
+                    <p>
+                        <strong>Duração:</strong>
+                        {% set minutos = sessao.duracao_segundos // 60 %}
+                        {% set segundos = sessao.duracao_segundos % 60 %}
+
+                        {% if minutos > 0 %}
+                            {{ minutos }} min e {{ segundos }} s
+                        {% else %}
+                            {{ segundos }} segundos
+                        {% endif %}
+                    </p>
+
+                    <p>
+                        <strong>Status:</strong>
+                        {% if sessao.status == "concluida" %}
+                            Concluída
+                        {% elif sessao.status == "interrompida" %}
+                            Interrompida
+                        {% endif %}
+                    </p>
+
+                    <form
+                        action="{{ url_for('apagar_sessao', sessao_id=sessao.id) }}"
+                        method="POST"
+                        onsubmit="return confirm('Tem certeza de que deseja apagar esta sessão? Esta ação não pode ser desfeita.');"
+                    >
+                        <button type="submit">Apagar sessão</button>
+                    </form>
+                </article>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="historico-vazio">
+            <h2>Nenhuma sessão registrada ainda</h2>
+            <p>
+                Quando você concluir ou interromper uma sessão
+                de foco, ela aparecerá aqui.
+            </p>
+        </div>
+    {% endif %}
+
+    <a href="{{ url_for('dashboard') }}">Voltar ao painel</a>
+</section>
+{% endblock %}

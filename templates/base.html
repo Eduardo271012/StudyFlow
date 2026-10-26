@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block titulo %}StudyFlow{% endblock %}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header class="cabecalho-sistema">
+        <div class="bloco-topo-esquerdo">
+
+            <a href="{{ url_for('index') }}" class="logo-wrapper">
+                <img src="{{ url_for('static', filename='imagem/Logo.png') }}" alt="Logo StudyFlow" class="logo-cabecalho"></a>
+
+            <nav class="menu">
+                <a href="{{ url_for('index') }}" class="link-principal link-inicio">INÍCIO</a>
+
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('dashboard')}}" class="link-principal">MEU PAINEL</a>
+                    <a href="{{ url_for('logout') }}" class="link-principal">SAIR</a>
+
+                {% else %}
+
+                    <a href="{{ url_for('login') }}" class="link-principal">ENTRAR</a>
+
+                    <a href="{{ url_for('cadastro') }}" class="botao-cadastro">CRIAR CONTA</a>
+
+                {% endif %}
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+        {% with mensagens = get_flashed_messages(with_categories=true) %}
+            {% for categoria, mensagem in mensagens %}
+                <div class="mensagem {{ categoria }}" role="status">
+                    {{ mensagem }}
+                </div>
+            {% endfor %}
+        {% endwith %}
+
+        {% block conteudo %}{% endblock %}
+    </main>
+
+</body>
+</html>

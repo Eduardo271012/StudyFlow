@@ -1,0 +1,187 @@
+
+{% extends 'base.html' %}
+
+{% block titulo %}Início | StudyFlow{% endblock %}
+
+{% block conteudo %}
+
+<div class="pagina-inicial">
+
+    <!-- APRESENTAÇÃO PRINCIPAL -->
+    <section class="hero-studyflow">
+
+        <div class="hero-texto">
+            <span class="etiqueta-hero">
+                SUA ROTINA, SEU PROGRESSO
+            </span>
+
+            <h2>
+                Seus estudos,<br>
+                <span>no seu ritmo.</span>
+            </h2>
+
+            <p>
+                Organize sua rotina, acompanhe seu progresso
+                e estude junto com sua turma.
+            </p>
+
+            <div class="acoes-inicio">
+                <a href="{{ url_for('cadastro') }}" class="botao">
+                    Começar agora
+                    <span aria-hidden="true">→</span>
+                </a>
+            </div>
+
+            <div class="hero-beneficio">
+                <span>✓</span>
+                Planeje seus estudos e acompanhe sua evolução.
+            </div>
+        </div>
+
+        <!-- ILUSTRAÇÃO DO PAINEL -->
+        <div class="hero-visual">
+
+            <div class="forma-decorativa forma-um"></div>
+            <div class="forma-decorativa forma-dois"></div>
+
+            <div class="painel-estudos">
+
+                <div class="painel-topo">
+                    <div class="painel-marca">
+                        <span class="mini-logo">SF</span>
+                        <strong>StudyFlow</strong>
+                    </div>
+                    <span class="status-online"></span>
+                </div>
+
+                <div class="painel-conteudo">
+
+                    <aside class="painel-menu">
+                        <div class="item-menu ativo">
+                            <span>⌂</span> Início
+                        </div>
+                        <div class="item-menu">
+                            <span>✅</span> Tarefas
+                        </div>
+                        <div class="item-menu">
+                            <span>📅</span> Calendário
+                        </div>
+                        <div class="item-menu">
+                            <span>🤝</span> Turmas
+                        </div>
+                    </aside>
+
+                    <div class="painel-dados">
+
+                        <div class="saudacao-painel">
+                            <h3>Bom estudo!</h3>
+                            <p>Seu próximo objetivo começa aqui.</p>
+                        </div>
+
+                        <div class="cartao-progresso">
+                            <div class="linha-cartao">
+                                <strong>Seu progresso</strong>
+                                <span>68%</span>
+                            </div>
+
+                            <div class="barra-progresso">
+                                <div class="barra-preenchida"></div>
+                            </div>
+
+                            <span class="texto-progresso">
+                                Continue no seu ritmo!
+                            </span>
+                        </div>
+
+                        <div class="cartao-tarefas">
+                            <strong>Suas matérias</strong>
+
+                            <div class="tarefa">
+                                <span class="check-tarefa">✓</span>
+                                <span>Matemática</span>
+                                <span class="tag-tarefa">Estudar</span>
+                            </div>
+
+                            <div class="tarefa">
+                                <span class="check-tarefa"></span>
+                                <span>Física</span>
+                                <span class="tag-tarefa">Revisar</span>
+                            </div>
+
+                            <div class="tarefa">
+                                <span class="check-tarefa"></span>
+                                <span>Química</span>
+                                <span class="tag-tarefa">Estudar</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="lembrete-flutuante">
+                <span class="lembrete-icone">✓</span>
+                <div>
+                    <strong>Um passo de cada vez</strong>
+                    <p>Seu progresso importa.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- RECURSOS DA PLATAFORMA -->
+    <section class="recursos-studyflow">
+
+        <div class="titulo-recursos">
+            <span>COMO PODEMOS AJUDAR?</span>
+            <h2>Tudo para estudar melhor.</h2>
+            <p>Ferramentas para organizar sua rotina e alcançar suas metas.</p>
+        </div>
+
+        <div class="grade-recursos">
+
+            <article class="cartao-recurso recurso-azul">
+                <div class="icone-recurso">📅</div>
+                <h3>Planejamento</h3>
+                <p>
+                    Organize suas matérias, defina metas
+                    e crie sua rotina de estudos.
+                </p>
+                <a href="{{ url_for('cadastro') }}">
+                    Comece a organizar <span>→</span>
+                </a>
+            </article>
+
+            <article class="cartao-recurso recurso-lilas">
+                <div class="icone-recurso">📈</div>
+                <h3>Progresso</h3>
+                <p>
+                    Acompanhe seu desempenho, visualize
+                    suas conquistas e mantenha o foco.
+                </p>
+                <a href="{{ url_for('cadastro') }}">
+                    Acompanhe sua evolução <span>→</span>
+                </a>
+            </article>
+
+            <article class="cartao-recurso recurso-azul">
+                <div class="icone-recurso">🤝</div>
+                <h3>Turmas</h3>
+                <p>
+                    Estude com seus colegas, compartilhe
+                    experiências e aprendam juntos.
+                </p>
+                <a href="{{ url_for('cadastro') }}">
+                    Estude em conjunto <span>→</span>
+                </a>
+            </article>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}

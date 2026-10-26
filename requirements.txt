@@ -1,0 +1,5 @@
+Flask
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-Login # Gerencia o acesso e a sessão do usuário depois que ele entra na conta
+Flask-WTF # Ajuda a criar e validar formulários
